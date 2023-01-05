@@ -6,7 +6,19 @@ namespace ProjectRef
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Adress adress = new Adress()
+            {
+                City = "Kraków",
+                PostalCOde = "31-456",
+                Street = "Grodzka 34"
+            };
+
+            Person person = new Person()
+            {
+                FirstName = "John",
+                LastName = "McClane",
+                Adress = adress
+            };
         }
     }
 }
