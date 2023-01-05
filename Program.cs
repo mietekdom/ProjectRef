@@ -20,7 +20,18 @@ namespace ProjectRef
 
                     if (propType.IsPrimitive || propType == typeof(string))
                     {
-                        Console.WriteLine($"{property.Name}: {propValue}");
+                        var displayPropertiesAttribute = property.GetCustomAttribute<DisplayAtributeProperties>();
+
+                        if (displayPropertiesAttribute != null)
+                        {
+                            Console.WriteLine($"{displayPropertiesAttribute.DisplayName}: {propValue}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{property.Name}: {propValue}");
+                        }
+
+                        
                     }
                 }
             }
