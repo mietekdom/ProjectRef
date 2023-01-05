@@ -15,7 +15,13 @@ namespace ProjectRef
                 foreach (var property in properties)
                 {
                     var propValue = property.GetValue(obj);
-                    Console.WriteLine($"{property.Name}: {propValue}");
+
+                    var propType = propValue.GetType();
+
+                    if (propType.IsPrimitive || propType == typeof(string))
+                    {
+                        Console.WriteLine($"{property.Name}: {propValue}");
+                    }
                 }
             }
             Adress adress = new Adress()
