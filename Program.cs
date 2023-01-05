@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace ProjectRef
 {
@@ -6,6 +7,17 @@ namespace ProjectRef
     {
         static void Main(string[] args)
         {
+            static void Display(object obj)
+            {
+                Type objType = obj.GetType();
+                var properties = objType.GetProperties();
+
+                foreach (var property in properties)
+                {
+                    var propValue = property.GetValue(obj);
+                    Console.WriteLine($"{property.Name}: {propValue}");
+                }
+            }
             Adress adress = new Adress()
             {
                 City = "Kraków",
@@ -19,6 +31,11 @@ namespace ProjectRef
                 LastName = "McClane",
                 Adress = adress
             };
+
+            Console.WriteLine("Person:");
+            Display(person);
+            Console.WriteLine("Adress:");
+            Display(adress);
         }
     }
 }
